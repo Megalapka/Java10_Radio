@@ -4,18 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioServiceTest {
-
-    @Test
-    public void shouldSetChanel() {
-        RadioService radio = new RadioService();
-        radio.currentVolume = 5;
-
-        int expected = 5;
-        int actual = radio.currentVolume;
-
-        Assertions.assertEquals(expected, actual);
-    }
-
     @Test
     public void shouldNextChanel() {
         RadioService radio = new RadioService();
@@ -84,6 +72,54 @@ public class RadioServiceTest {
 
         int expected = 0;
         int actual = radio.numberCurrentChannel;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTurnUpVolume() {
+        RadioService radio = new RadioService();
+        radio.currentVolume = 6;
+        radio.turnUpVolume();
+
+        int expected = 7;
+        int actual = radio.currentVolume;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotTurnUpAboveTenVolume() {
+        RadioService radio = new RadioService();
+        radio.currentVolume = 10;
+        radio.turnUpVolume();
+
+        int expected = 10;
+        int actual = radio.currentVolume;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTurnDownVolume() {
+        RadioService radio = new RadioService();
+        radio.currentVolume = 6;
+        radio.turnDownVolume();
+
+        int expected = 5;
+        int actual = radio.currentVolume;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotTurnDownLessZeroVolume() {
+        RadioService radio = new RadioService();
+        radio.currentVolume = 0;
+        radio.turnDownVolume();
+
+        int expected = 0;
+        int actual = radio.currentVolume;
 
         Assertions.assertEquals(expected, actual);
     }

@@ -23,4 +23,16 @@ public class RadioService {
         }
         numberCurrentChannel = newChannel;
     }
+
+    public void turnUpVolume() {
+        if (currentVolume < 10) {
+            currentVolume++;
+        }
+    }
+
+    public void turnDownVolume() {
+        if (currentVolume > 0) {
+            currentVolume--;
+        }
+    }
 }
