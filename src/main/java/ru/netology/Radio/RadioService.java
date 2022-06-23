@@ -1,15 +1,22 @@
 package ru.netology.Radio;
 public class RadioService {
-    public int numberCurrentChannel;
+    private int numberCurrentChannel;
     public int currentVolume;
-    public void NextChannel() {
+
+    public void setNewChannel(int newChannel) {
+        if ((newChannel <0 ) | (newChannel > 9)) {
+            return;
+        }
+        numberCurrentChannel = newChannel;
+    }
+    public void nextChannel() {
         if (numberCurrentChannel == 9) {
             numberCurrentChannel = 0;
         } else {
             numberCurrentChannel++;
         }
     }
-    public void PrevChannel() {
+    public void prevChannel() {
         if (numberCurrentChannel == 0) {
             numberCurrentChannel = 9;
         } else {
@@ -17,11 +24,8 @@ public class RadioService {
         }
     }
 
-    public void setNewChannel(int newChannel) {
-        if ((newChannel <=0 ) | (newChannel >= 9)) {
-            return;
-        }
-        numberCurrentChannel = newChannel;
+    public int getNumberCurrentChannel() {
+        return numberCurrentChannel;
     }
 
     public void turnUpVolume() {
