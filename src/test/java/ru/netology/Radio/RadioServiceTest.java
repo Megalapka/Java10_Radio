@@ -92,11 +92,11 @@ public class RadioServiceTest {
     @Test
     public void shouldTurnUpVolume() {
         RadioService radio = new RadioService();
-        radio.currentVolume = 6;
+        radio.setCurrentVolume(6);
         radio.turnUpVolume();
 
         int expected = 7;
-        int actual = radio.currentVolume;
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -104,11 +104,11 @@ public class RadioServiceTest {
     @Test
     public void shouldNotTurnUpAboveTenVolume() {
         RadioService radio = new RadioService();
-        radio.currentVolume = 10;
+        radio.setCurrentVolume(10);
         radio.turnUpVolume();
 
         int expected = 10;
-        int actual = radio.currentVolume;
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -116,11 +116,11 @@ public class RadioServiceTest {
     @Test
     public void shouldTurnDownVolume() {
         RadioService radio = new RadioService();
-        radio.currentVolume = 6;
+        radio.setCurrentVolume(6);
         radio.turnDownVolume();
 
         int expected = 5;
-        int actual = radio.currentVolume;
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -128,11 +128,11 @@ public class RadioServiceTest {
     @Test
     public void shouldNotTurnDownLessZeroVolume() {
         RadioService radio = new RadioService();
-        radio.currentVolume = 0;
+        radio.setCurrentVolume(0);
         radio.turnDownVolume();
 
         int expected = 0;
-        int actual = radio.currentVolume;
+        int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
