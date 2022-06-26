@@ -104,10 +104,10 @@ public class RadioServiceTest {
     @Test
     public void shouldNotTurnUpAboveTenVolume() {
         RadioService radio = new RadioService();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.turnUpVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -135,6 +135,50 @@ public class RadioServiceTest {
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+
+    // Tests for code with constructor
+
+    @Test
+    public void shouldGetMaxChanel() {
+        RadioService radio = new RadioService(22);
+
+        Assertions.assertEquals(21, radio.getMaxChannel());
+    }
+
+    @Test
+    public void shouldSetNewChannelWithConstructor() {
+        RadioService radio = new RadioService(45);
+        radio.setNewChannel(43);
+
+        Assertions.assertEquals(43, radio.getNumberCurrentChannel());
+    }
+    @Test
+    public void shouldNotSetChanelAboveMax() {
+        RadioService radio = new RadioService(12);
+        radio.setNewChannel(22);
+
+        Assertions.assertEquals(0, radio.getNumberCurrentChannel());
+    }
+
+    @Test
+    public void shouldChangeChanelMaxToZero() {
+        RadioService radio = new RadioService(22);
+        radio.setNewChannel(radio.getMaxChannel());
+        radio.nextChannel();
+
+
+        Assertions.assertEquals(0, radio.getNumberCurrentChannel());
+    }
+
+    @Test
+    public void shouldChangeChanelZeroToMax() {
+        RadioService radio = new RadioService(22);
+        radio.setNewChannel(radio.getMinChannel());
+        radio.prevChannel();
+
+        Assertions.assertEquals(21, radio.getNumberCurrentChannel());
     }
 
 }
