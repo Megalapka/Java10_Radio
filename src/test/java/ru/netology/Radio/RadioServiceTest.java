@@ -92,10 +92,10 @@ public class RadioServiceTest {
     @Test
     public void shouldTurnUpVolume() {
         RadioService radio = new RadioService();
-        radio.setCurrentVolume(6);
+        radio.setCurrentVolume(7);
         radio.turnUpVolume();
 
-        int expected = 7;
+        int expected = 8;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
