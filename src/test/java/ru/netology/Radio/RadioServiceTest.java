@@ -7,10 +7,10 @@ public class RadioServiceTest {
     @Test
     public void shouldNextChanel() {
         RadioService radio = new RadioService();
-        radio.setNewChannel(5);
+        radio.setNewChannel(8);
         radio.nextChannel();
 
-        int expected = 6;
+        int expected = 9;
         int actual = radio.getNumberCurrentChannel();
 
         Assertions.assertEquals(expected, actual);
@@ -92,10 +92,10 @@ public class RadioServiceTest {
     @Test
     public void shouldTurnUpVolume() {
         RadioService radio = new RadioService();
-        radio.setCurrentVolume(6);
+        radio.setCurrentVolume(8);
         radio.turnUpVolume();
 
-        int expected = 7;
+        int expected = 9;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
