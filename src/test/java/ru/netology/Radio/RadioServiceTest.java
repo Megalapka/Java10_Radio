@@ -154,6 +154,7 @@ public class RadioServiceTest {
 
         Assertions.assertEquals(43, radio.getNumberCurrentChannel());
     }
+
     @Test
     public void shouldNotSetChanelAboveMax() {
         RadioService radio = new RadioService(12);
