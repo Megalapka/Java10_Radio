@@ -137,5 +137,17 @@ public class RadioServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void newshouldNotTurnDownLessZeroVolume() {
+        RadioService radio = new RadioService();
+        radio.setCurrentVolume(0);
+        radio.turnDownVolume();
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
 
